@@ -1,9 +1,6 @@
-.biennial-filter-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+::ng-deep .mdc-line-ripple {
+    display: none !important;
 }
-
-.filter-full-width {
-    width: 100%;
+::ng-deep .mat-mdc-select-arrow-wrapper {
+    display: none !important;
 }

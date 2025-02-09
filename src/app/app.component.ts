@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { FilterComponent } from './base-component/filter/filter.component'
 
-import { FilterComponent } from "./base-component/filter/filter.component"
 
 @Component({
   selector: 'app-component',

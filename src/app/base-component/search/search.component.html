@@ -1,1 +1,12 @@
-<p>search works!</p>
+<form class="biennial-filter-form">
+    <mat-form-field class="filter-full-width">
+        <mat-label>Поиск по авторам/произведениям</mat-label>
+        <input type="text" aria-label="Поиск по авторам/произведениям" matInput [formControl]="myControl"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            @for (option of options; track option) {
+            <mat-option [value]="option">{{option}}</mat-option>
+            }
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
