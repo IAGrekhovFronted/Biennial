@@ -1,0 +1,37 @@
+@mixin toogle-item {
+    height: 35px;
+    width: 35px;
+    background-color: #fff;
+    opacity: 0.3;
+}
+
+.toogle-icon-wrapper {
+    display: flex;
+    gap: 5px;
+}
+
+.toogle-item {
+    height: 35px;
+    width: 35px;
+}
+
+.toogle-grid {
+    background-image: url("./img/IconGrid.png");
+    cursor: pointer;
+    @include toogle-item;
+}
+
+.toogle-slide {
+    background-image: url("./img/IconSlide.png");
+    @include toogle-item;
+}
+
+.toogle-table {
+    background-image: url("./img/IconTable.png");
+    cursor: pointer;
+    @include toogle-item;
+}
+
+.active {
+    opacity: 1;
+}
