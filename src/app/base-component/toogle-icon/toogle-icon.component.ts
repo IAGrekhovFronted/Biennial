@@ -2,14 +2,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 import { NgClass } from '@angular/common';
 
-import { GetDataService } from '../../../services/get-data.service'
-
 @Component({
   selector: 'toogle-icon',
   imports: [NgClass],
   templateUrl: './toogle-icon.component.html',
-  styleUrl: './toogle-icon.component.scss',
-  providers: [GetDataService]
+  styleUrl: './toogle-icon.component.scss'
 })
 export class ToogleIconComponent {
   activeGrid: boolean = true;
@@ -17,7 +14,7 @@ export class ToogleIconComponent {
 
   @Output() changeVisible: EventEmitter<string> = new EventEmitter()
 
-  async setActiveGrid() {
+  setActiveGrid() {
     this.activeGrid = true;
     this.activetable = false;
     this.changeVisible.emit('Grid')

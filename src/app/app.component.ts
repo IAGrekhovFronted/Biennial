@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
-import { ToogleIconComponent } from "./base-component/toogle-icon/toogle-icon.component"
+import { FilterComponent } from "./base-component/filter/filter.component"
 
 @Component({
   selector: 'app-component',
-  imports: [ToogleIconComponent],
+  imports: [
+    FilterComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
