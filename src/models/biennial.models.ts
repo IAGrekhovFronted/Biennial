@@ -13,7 +13,9 @@ export interface IArtwork {
     creation_for_biennial: boolean;
     author_teams: AuthorTeam[];
     authors: Author[];
-
+    type_project: TypeProject;
+    biennial: BiennialNumber;
+    explication_area: ExplicationArea;
 }
 
 export interface AuthorTeam {
@@ -28,6 +30,7 @@ export interface AuthorTeam {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    country_team: CountryTeam
 }
 
 export interface Author {
@@ -43,4 +46,66 @@ export interface Author {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    country_origins: Country
+}
+
+
+export interface IRowTableData {
+    author: string;
+    country: string;
+    composition: string;
+    type: string;
+    biennial: string;
+    area: string;
+}
+
+interface TypeProject {
+    id: number;
+    documentId: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+}
+
+interface Country {
+    id: number;
+    documentId: string;
+    country: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    country_localise: string;
+}
+
+interface CountryTeam {
+    id: number;
+    documentId: string;
+    country: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    country_localise: string;
+}
+
+interface BiennialNumber {
+    id: number;
+    documentId: string;
+    edition: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    edition_localise: string;
+}
+
+interface ExplicationArea {
+    id: number;
+    documentId: string;
+    title_localise: string;
+    title: string;
+    home: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    street: string;
 }

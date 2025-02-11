@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { FilterComponent } from './base-component/filter/filter.component'
+import { TableComponent } from './base-component/table/table.component'
 
 
 @Component({
   selector: 'app-component',
   imports: [
-    FilterComponent
+    TableComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

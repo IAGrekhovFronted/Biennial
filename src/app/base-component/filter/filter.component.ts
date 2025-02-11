@@ -15,7 +15,7 @@ export class FilterComponent implements AfterViewInit {
   widthFilter = { "width": "100px" }
 
   @Input() title: string = "Меню"
-  @Input() options = ['Опция 1', 'Опция 2', 'Опция 3'];
+  @Input() options = [];
   @Input() width: string = '100px'
 
   ngAfterViewInit(): void {
