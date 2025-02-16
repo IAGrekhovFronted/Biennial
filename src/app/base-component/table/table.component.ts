@@ -9,11 +9,13 @@ import { TableDataService } from '../../../services/table-data.service'
   selector: 'table-biennial',
   imports: [MatTableModule, MatSortModule, MatPaginatorModule],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.css',
+  styleUrl: './table.component.scss',
   standalone: true
 })
 export class TableComponent implements OnInit {
   countComposition: number = 0;
+  startPagination: number = 0;
+  pagination: number = 2;
 
   private _liveAnnouncer = inject(LiveAnnouncer);
 
@@ -27,10 +29,11 @@ export class TableComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    const tableData = await this.dataService.getTableData()
+    const allTableData = await this.dataService.getTableData()
+    const tableData = await this.dataService.getTableDataPagination(this.startPagination, this.pagination)
     this.dataSource = new MatTableDataSource(tableData);
     this.dataSource.sort = this.sort;
-    this.countComposition = tableData.length;
+    this.countComposition = allTableData.length;
   }
 
   announceSortChange(sortState: Sort) {
@@ -38,6 +41,23 @@ export class TableComponent implements OnInit {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+  async paginationLeft() {
+    if (this.startPagination === 0 || this.pagination > this.countComposition) return;
+    else {
+      this.startPagination -= this.pagination;
+      const tableData = await this.dataService.getTableDataPagination(this.startPagination, this.pagination)
+      this.dataSource = new MatTableDataSource(tableData);
+    }
+  }
+  async paginationRight() {
+    if (this.pagination > this.countComposition) return;
+    else {
+      this.startPagination += this.pagination;
+      const tableData = await this.dataService.getTableDataPagination(this.startPagination, this.pagination)
+      this.dataSource = new MatTableDataSource(tableData);
     }
   }
 }

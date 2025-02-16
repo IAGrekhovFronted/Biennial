@@ -1,0 +1,58 @@
+@mixin toogle-item {
+    background-color: #fff;
+    opacity: 0.3;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.wrapper-pagination {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 35px;
+    margin-top: 70px;
+}
+
+.pagination-arrow-left {
+    background-image: url("./img/arrowLeft.png");
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+    @include toogle-item;
+}
+
+.pagination-current {
+    border-bottom: 1px solid #000;
+    margin: 0 10px;
+    width: 30px;
+    text-align: center;
+    user-select: none;
+}
+
+.pagination-arrow-right {
+    background-image: url("./img/arrowRight.png");
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+    @include toogle-item;
+}
+
+.pagination-slide {
+    background-image: url("./img/IconSlide.png");
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    @include toogle-item;
+}
+
+.pagination-count {
+    user-select: none;
+}

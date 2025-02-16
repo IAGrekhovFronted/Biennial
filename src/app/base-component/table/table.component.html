@@ -46,3 +46,12 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<div class="wrapper-pagination">
+    <div class="pagination-arrow-left" (click)="paginationLeft()"></div>
+    <div class="pagination-current">
+        {{startPagination + pagination > countComposition ? countComposition :startPagination + pagination}}
+    </div>
+    <div class="pagination-arrow-right" (click)="paginationRight()"></div>
+    <div class="pagination-slide"></div>
+    <div class="pagination-count">{{countComposition}}</div>
+</div>
