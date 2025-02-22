@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, inject } from "@angular/core";
 import { MatSort, Sort, MatSortModule } from "@angular/material/sort";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
-import { TableDataService } from "../../../services/table-data.service";
+import { TableDataService } from "@services/table-data.service";
 import { IRowTableData } from "src/models/table-data.interface";
 
 @Component({

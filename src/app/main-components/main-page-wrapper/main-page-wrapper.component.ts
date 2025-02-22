@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { TableComponent } from "../../base-component/table/table.component";
-import { GridComponent } from "../../base-component/grid/grid.component";
-import { AreaFiltersComponent } from "../../base-component/area-filters/area-filters.component";
+import { TableComponent } from "@base-component/table/table.component";
+import { GridComponent } from "@base-component/grid/grid.component";
+import { AreaFiltersComponent } from "@base-component/area-filters/area-filters.component";
 
 @Component({
   selector: "main-page-wrapper",

@@ -1,17 +1,14 @@
 import { Component, HostListener } from "@angular/core";
 import { MainAuthorCardComponent } from "../main-author-card/main-author-card.component";
-import {
-  IAuthorCard,
-  TargetCardEnum,
-} from "../../../models/grid-data.interface";
+import { IAuthorCard, TargetCardEnum } from "@models/grid-data.interface";
 
-import { RouterOutlet, RouterLink, Router } from "@angular/router";
+import { Router } from "@angular/router";
 
-import { GridDataService } from "../../../services/grid-data.service";
+import { GridDataService } from "@services/grid-data.service";
 
 @Component({
   selector: "grid",
-  imports: [MainAuthorCardComponent, RouterOutlet, RouterLink],
+  imports: [MainAuthorCardComponent],
   templateUrl: "./grid.component.html",
   styleUrl: "./grid.component.css",
 })
@@ -61,6 +58,6 @@ export class GridComponent {
 
   openAuthorCard(documentId: string, targetCard: TargetCardEnum) {
     console.log("CLICK", documentId, targetCard);
-    this.router.navigate(["author", "15"]);
+    this.router.navigate([targetCard, documentId]);
   }
 }

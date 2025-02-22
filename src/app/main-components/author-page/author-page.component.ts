@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { AuthorCardComponent } from "../../base-component/author-card/author-card.component";
+import { AuthorCardComponent } from "@base-component/author-card/author-card.component";
 
 @Component({
   selector: "author-page",

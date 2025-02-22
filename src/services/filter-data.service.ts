@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FetchService } from "./fetch.service";
 
-import { IArtwork } from "../models//common.interface";
+import { IArtwork } from "@models/common.interface";
 
 @Injectable({
   providedIn: "root",
