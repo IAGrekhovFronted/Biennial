@@ -57,7 +57,6 @@ export class GridComponent {
   }
 
   openAuthorCard(documentId: string, targetCard: TargetCardEnum) {
-    console.log("CLICK", documentId, targetCard);
     this.router.navigate([targetCard, documentId]);
   }
 }
