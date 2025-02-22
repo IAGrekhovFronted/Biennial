@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { IComposition } from "src/models/grid-data.interface";
+import { IComposition } from "../../../models/grid-data.interface";
 
 @Component({
   selector: "main-author-card",

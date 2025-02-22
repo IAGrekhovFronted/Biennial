@@ -1,0 +1,11 @@
+<div class="wrapper-author-card">
+  <div class="image-container">
+    <img src="{{ photo }}" alt="Фотография автора" class="author-card-photo" />
+  </div>
+  <div class="author-card-name-author">{{ nameAuthor }}</div>
+  @for (field of info; track field) {
+  <div class="author-card-info">
+    {{ field.nameField }} {{ field.valueField && "-" }} {{ field.valueField }}
+  </div>
+  }
+</div>
