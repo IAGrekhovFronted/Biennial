@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from "@angular/core";
-import { SearchComponent } from "../../base-component/search/search.component";
-import { FilterComponent } from "../../base-component/filter/filter.component";
-import { ToogleIconComponent } from "../../base-component/toogle-icon/toogle-icon.component";
+import { SearchComponent } from "../search/search.component";
+import { FilterComponent } from "../filter/filter.component";
+import { ToogleIconComponent } from "../toogle-icon/toogle-icon.component";
 
 @Component({
   selector: "area-filters",

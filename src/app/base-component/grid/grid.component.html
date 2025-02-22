@@ -4,6 +4,7 @@
     [nameAuthor]="author.name_localise"
     [photo]="author.image"
     [compositions]="author.composition"
+    (click)="openAuthorCard(author.documentId, author.type)"
     class="grid-author-card"
   ></main-author-card>
   }

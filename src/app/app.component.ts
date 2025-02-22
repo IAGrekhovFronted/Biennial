@@ -1,11 +1,10 @@
 import { Component } from "@angular/core";
-// import { MainPageWrapperComponent } from "../app/main-components/main-page-wrapper/main-page-wrapper.component";
-import { AuthorCardComponent } from "../app/base-component/author-card/author-card.component";
+import { MainPageWrapperComponent } from "../app/main-components/main-page-wrapper/main-page-wrapper.component";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: "app-component",
-  // imports: [MainPageWrapperComponent],
-  imports: [AuthorCardComponent],
+  imports: [MainPageWrapperComponent, RouterOutlet],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
 })

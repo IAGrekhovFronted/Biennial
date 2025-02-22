@@ -1,11 +1,17 @@
 import { Component, HostListener } from "@angular/core";
-import { GridDataService } from "../../../services/grid-data.service";
 import { MainAuthorCardComponent } from "../main-author-card/main-author-card.component";
-import { IAuthorCard } from "../../../models/grid-data.interface";
+import {
+  IAuthorCard,
+  TargetCardEnum,
+} from "../../../models/grid-data.interface";
+
+import { RouterOutlet, RouterLink, Router } from "@angular/router";
+
+import { GridDataService } from "../../../services/grid-data.service";
 
 @Component({
   selector: "grid",
-  imports: [MainAuthorCardComponent],
+  imports: [MainAuthorCardComponent, RouterOutlet, RouterLink],
   templateUrl: "./grid.component.html",
   styleUrl: "./grid.component.css",
 })
@@ -15,7 +21,10 @@ export class GridComponent {
   pagination: number = 40;
   dataSource: IAuthorCard[] = [];
 
-  constructor(private readonly dataService: GridDataService) {}
+  constructor(
+    private readonly dataService: GridDataService,
+    private readonly router: Router
+  ) {}
 
   async ngOnInit(): Promise<void> {
     await this.loadData();
@@ -48,5 +57,10 @@ export class GridComponent {
     ) {
       this.loadData();
     }
+  }
+
+  openAuthorCard(documentId: string, targetCard: TargetCardEnum) {
+    console.log("CLICK", documentId, targetCard);
+    this.router.navigate(["author", "15"]);
   }
 }
