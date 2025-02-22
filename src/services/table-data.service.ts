@@ -32,7 +32,7 @@ function mapTableData(data: IArtwork[]): IRowTableData[] {
     const authors = art.authors?.map((x) => x.name_localise) || [];
     const authorCountry =
       art.authors?.map((x) => x.country_origins?.country_localise) || [];
-    const authorTeams = art.author_teams?.map((x) => x.team_localise) || [];
+    const authorTeams = art.author_teams?.map((x) => x.name_localise) || [];
     const authorTeamsCountry =
       art.author_teams?.map((x) => x.country_team?.country_localise) || [];
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { FetchService } from "./fetch.service";
-import { IAuthor } from "src/models/common.interface";
+import { IAuthor, IAuthorTeam } from "src/models/common.interface";
 import { IAuthorCard } from "../models/grid-data.interface";
 
 @Injectable({
@@ -10,25 +10,45 @@ export class GridDataService {
   constructor(private readonly fetchService: FetchService) {}
 
   async getGridData() {
-    const responce: IAuthor[] = await this.fetchService.getRelationEntities(
-      "authors",
-      "populate=composition"
-    );
+    const responceAuthor: IAuthor[] =
+      await this.fetchService.getRelationEntities(
+        "authors",
+        "populate=composition"
+      );
 
-    return mapGridData(responce);
+    const responceAuthorTeams: IAuthor[] =
+      await this.fetchService.getRelationEntities(
+        "author-teams",
+        "populate=composition"
+      );
+
+    const data = responceAuthor.concat(responceAuthorTeams);
+
+    return mapGridData(data);
   }
 
   async getGridDataPagination(start: number, pagination: number) {
-    const responce: IAuthor[] = await this.fetchService.getRelationEntities(
-      "authors",
-      `pagination%5Bstart%5D=${start}&pagination%5Blimit%5D=${pagination}&populate=composition`
-    );
+    const authorsResponse: IAuthor[] =
+      await this.fetchService.getRelationEntities(
+        "authors",
+        `pagination%5Bstart%5D=${start}&pagination%5Blimit%5D=${pagination}&populate=composition`
+      );
 
-    return mapGridData(responce);
+    const authorTeamsResponse: IAuthorTeam[] =
+      await this.fetchService.getRelationEntities(
+        "author-teams",
+        `pagination%5Bstart%5D=${start}&pagination%5Blimit%5D=${pagination}&populate=composition`
+      );
+
+    const combinedData = [...authorsResponse, ...authorTeamsResponse];
+
+    const paginatedData = combinedData.slice(start, start + pagination);
+
+    return mapGridData(paginatedData);
   }
 }
 
-function mapGridData(data: IAuthor[]): IAuthorCard[] {
+function mapGridData(data: Array<IAuthorTeam | IAuthor>): IAuthorCard[] {
   return data.map((item) => {
     return {
       name_localise: item.name_localise,

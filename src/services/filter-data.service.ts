@@ -27,7 +27,7 @@ export class FilterDataService {
 
       if (art.author_teams.length > 0) {
         art.author_teams.forEach((team) => {
-          options.add(team.team_localise);
+          options.add(team.name_localise);
         });
       }
 

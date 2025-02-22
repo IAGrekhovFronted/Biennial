@@ -21,8 +21,8 @@ export interface IArtwork {
 export interface IAuthorTeam {
   id: number;
   documentId: string;
-  team: string;
-  team_localise: string;
+  name: string;
+  name_localise: string;
   founded_year: string;
   description_team: string;
   link_photo: string | null;
@@ -31,6 +31,7 @@ export interface IAuthorTeam {
   updatedAt: string;
   publishedAt: string;
   country_team: ICountryTeam;
+  composition?: IArtwork[];
 }
 
 export interface IAuthor {
