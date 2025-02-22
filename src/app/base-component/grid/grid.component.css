@@ -1,0 +1,10 @@
+.wrapper-grid-authors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 50px;
+  width: 100%;
+}
+
+.grid-author-card {
+  max-width: 500px;
+}

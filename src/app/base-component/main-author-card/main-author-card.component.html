@@ -9,7 +9,8 @@
   <div class="main-author-card-nameAuthor">{{ nameAuthor }}</div>
   @for (composition of compositions; track composition) {
   <div class="main-author-card-composition">
-    {{ composition.composition_localise }} - {{ composition.year_creation }}
+    {{ composition.composition_localise }}
+    {{ composition.year_creation && "-" }} {{ composition.year_creation }}
   </div>
   }
 </div>

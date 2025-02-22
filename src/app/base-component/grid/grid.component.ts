@@ -15,17 +15,6 @@ export class GridComponent {
   pagination: number = 10;
   dataSource!: IAuthorCard[];
 
-  mock = [
-    {
-      composition_localise: "Очень страшное кино 2",
-      year_creation: "2002",
-    },
-    {
-      composition_localise: "Вампиры",
-      year_creation: "1990",
-    },
-  ];
-
   constructor(private readonly dataService: GridDataService) {}
 
   async ngOnInit(): Promise<void> {
