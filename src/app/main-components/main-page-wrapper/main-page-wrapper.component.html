@@ -1,2 +1,6 @@
-<area-filters></area-filters>
+<area-filters (changeVisible)="changeVisibleVariant($event)"></area-filters>
+@if (visibleTable) {
 <table-biennial></table-biennial>
+} @else {
+<grid></grid>
+}

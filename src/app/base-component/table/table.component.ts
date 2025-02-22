@@ -16,7 +16,7 @@ import { IRowTableData } from "src/models/table-data.interface";
 export class TableComponent implements OnInit {
   countComposition: number = 0;
   startPagination: number = 0;
-  pagination: number = 2;
+  pagination: number = 20;
 
   private _liveAnnouncer = inject(LiveAnnouncer);
 
@@ -36,6 +36,7 @@ export class TableComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const allTableData = await this.dataService.getTableData();
+    console.log(allTableData);
     const tableData = await this.dataService.getTableDataPagination(
       this.startPagination,
       this.pagination
@@ -43,7 +44,6 @@ export class TableComponent implements OnInit {
     this.dataSource = new MatTableDataSource(tableData);
     this.dataSource.sort = this.sort;
     this.countComposition = allTableData.length;
-    console.log(this.dataSource);
   }
 
   announceSortChange(sortState: Sort) {

@@ -1,9 +1,9 @@
 <div class="filters-header-biennial"></div>
 <div class="filters-wrapper">
-    <div class="filters-icon-biennial"></div>
-    <search class="search-biennial"></search>
-    <filter [title]="'ТИП'"></filter>
-    <filter [title]="'БИЕННАЛЕ №'" [width]="'135px'"></filter>
-    <filter [title]="'СТРАНА'"></filter>
-    <toogle-icon></toogle-icon>
+  <div class="filters-icon-biennial"></div>
+  <search class="search-biennial"></search>
+  <filter [title]="'ТИП'"></filter>
+  <filter [title]="'БИЕННАЛЕ №'" [width]="'135px'"></filter>
+  <filter [title]="'СТРАНА'"></filter>
+  <toogle-icon (changeVisible)="changeVariantVisible($event)"></toogle-icon>
 </div>

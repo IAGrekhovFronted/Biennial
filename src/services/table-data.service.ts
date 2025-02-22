@@ -14,7 +14,6 @@ export class TableDataService {
       "projects",
       "populate=authors.country_origins&populate=author_teams.country_team&populate=type_project&populate=biennial&populate=explication_area"
     );
-
     return mapTableData(responce);
   }
 
@@ -28,30 +27,27 @@ export class TableDataService {
   }
 }
 
-function mapTableData(data: IArtwork[]) {
+function mapTableData(data: IArtwork[]): IRowTableData[] {
   const tableData: IRowTableData[] = data.map((art) => {
-    const authors = art.authors.map((x) => x.name_localise);
-    const authorCountry = art.authors.map(
-      (x) => x.country_origins.country_localise
-    );
-
-    const authorTeams = art.author_teams.map((x) => x.team_localise);
-    const authorTeamsCountry = art.author_teams.map(
-      (x) => x.country_team.country_localise
-    );
+    const authors = art.authors?.map((x) => x.name_localise) || [];
+    const authorCountry =
+      art.authors?.map((x) => x.country_origins?.country_localise) || [];
+    const authorTeams = art.author_teams?.map((x) => x.team_localise) || [];
+    const authorTeamsCountry =
+      art.author_teams?.map((x) => x.country_team?.country_localise) || [];
 
     return {
-      author:
-        art.authors.length > 0 ? authors.toString() : authorTeams.toString(),
+      author: authors.length > 0 ? authors.join(", ") : authorTeams.join(", "),
       country:
-        art.authors.length > 0
-          ? authorCountry.toString()
-          : authorTeamsCountry.toString(),
-      composition: art?.title_localise,
-      type: art.type_project.type,
-      biennial: art.biennial.edition_localise,
-      area: art?.explication_area?.title_localise,
+        authors.length > 0
+          ? authorCountry.join(", ")
+          : authorTeamsCountry.join(", "),
+      composition: art.title_localise || "",
+      type: art.type_project?.type || "",
+      biennial: art.biennial?.edition_localise || "",
+      area: art.explication_area?.title_localise || "",
     };
   });
+
   return tableData;
 }
