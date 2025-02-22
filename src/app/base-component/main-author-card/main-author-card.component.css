@@ -1,0 +1,25 @@
+.wrapper-main-author-card {
+  width: 500px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+}
+
+.main-author-card-nameAuthor {
+  margin: 30px 0;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.main-author-card-composition {
+  font-size: 25px;
+  line-height: 40px;
+}

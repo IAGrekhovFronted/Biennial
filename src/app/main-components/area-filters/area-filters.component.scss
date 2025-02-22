@@ -1,0 +1,26 @@
+@mixin image-format {
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.filters-header-biennial {
+    background-image: url("./img/filtersHeaderImage.png");
+    @include image-format;
+}
+
+.filters-wrapper {
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters-icon-biennial {
+    background-image: url("./img//iconBiennial.png");
+    width: 40px;
+    @include image-format;
+}
+
+.search-biennial {
+    width: 300px;
+}

@@ -1,16 +1,17 @@
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
-import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { TableDataService } from '../../../services/table-data.service'
+import { LiveAnnouncer } from "@angular/cdk/a11y";
+import { Component, OnInit, ViewChild, inject } from "@angular/core";
+import { MatSort, Sort, MatSortModule } from "@angular/material/sort";
+import { MatTableDataSource, MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { TableDataService } from "../../../services/table-data.service";
+import { IRowTableData } from "src/models/table-data.interface";
 
 @Component({
-  selector: 'table-biennial',
+  selector: "table-biennial",
   imports: [MatTableModule, MatSortModule, MatPaginatorModule],
-  templateUrl: './table.component.html',
-  styleUrl: './table.component.scss',
-  standalone: true
+  templateUrl: "./table.component.html",
+  styleUrl: "./table.component.scss",
+  standalone: true,
 })
 export class TableComponent implements OnInit {
   countComposition: number = 0;
@@ -19,36 +20,49 @@ export class TableComponent implements OnInit {
 
   private _liveAnnouncer = inject(LiveAnnouncer);
 
-  displayedColumns: string[] = ['author', 'country', 'composition', 'type', 'biennial', 'area'];
-  dataSource: any;
+  displayedColumns: string[] = [
+    "author",
+    "country",
+    "composition",
+    "type",
+    "biennial",
+    "area",
+  ];
+  dataSource!: MatTableDataSource<IRowTableData>;
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(
-    private readonly dataService: TableDataService
-  ) { }
+  constructor(private readonly dataService: TableDataService) {}
 
-  async ngOnInit() {
-    const allTableData = await this.dataService.getTableData()
-    const tableData = await this.dataService.getTableDataPagination(this.startPagination, this.pagination)
+  async ngOnInit(): Promise<void> {
+    const allTableData = await this.dataService.getTableData();
+    const tableData = await this.dataService.getTableDataPagination(
+      this.startPagination,
+      this.pagination
+    );
     this.dataSource = new MatTableDataSource(tableData);
     this.dataSource.sort = this.sort;
     this.countComposition = allTableData.length;
+    console.log(this.dataSource);
   }
 
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
-      this._liveAnnouncer.announce('Sorting cleared');
+      this._liveAnnouncer.announce("Sorting cleared");
     }
   }
 
   async paginationLeft() {
-    if (this.startPagination === 0 || this.pagination > this.countComposition) return;
+    if (this.startPagination === 0 || this.pagination > this.countComposition)
+      return;
     else {
       this.startPagination -= this.pagination;
-      const tableData = await this.dataService.getTableDataPagination(this.startPagination, this.pagination)
+      const tableData = await this.dataService.getTableDataPagination(
+        this.startPagination,
+        this.pagination
+      );
       this.dataSource = new MatTableDataSource(tableData);
     }
   }
@@ -56,7 +70,10 @@ export class TableComponent implements OnInit {
     if (this.pagination > this.countComposition) return;
     else {
       this.startPagination += this.pagination;
-      const tableData = await this.dataService.getTableDataPagination(this.startPagination, this.pagination)
+      const tableData = await this.dataService.getTableDataPagination(
+        this.startPagination,
+        this.pagination
+      );
       this.dataSource = new MatTableDataSource(tableData);
     }
   }

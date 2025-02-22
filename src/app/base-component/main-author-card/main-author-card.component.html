@@ -1,0 +1,15 @@
+<div class="wrapper-main-author-card">
+  <div class="image-container">
+    <img
+      src="{{ photo }}"
+      alt="Фотография автора"
+      class="main-author-card-photo"
+    />
+  </div>
+  <div class="main-author-card-nameAuthor">{{ nameAuthor }}</div>
+  @for (composition of compositions; track composition) {
+  <div class="main-author-card-composition">
+    {{ composition.composition_localise }} - {{ composition.year_creation }}
+  </div>
+  }
+</div>
