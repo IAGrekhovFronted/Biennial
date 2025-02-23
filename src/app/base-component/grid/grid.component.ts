@@ -59,4 +59,7 @@ export class GridComponent {
   openAuthorCard(documentId: string, targetCard: TargetCardEnum) {
     this.router.navigate([targetCard, documentId]);
   }
+  openTest() {
+    this.router.navigate(["composition", "q0snvitcc2yc3f88ovitdjzr"]);
+  }
 }

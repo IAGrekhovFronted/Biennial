@@ -1,0 +1,24 @@
+<area-header></area-header>
+<div class="wrapper-artwork-card">
+  <div class="artwork-title">{{ datasourceCard?.title_localise }}</div>
+
+  <div class="wrapper-artwork-information">
+    <div class="artwork-common-info artwork-info">
+      @for (field of information; track field) {
+      <div class="artwork-card-info">
+        {{ field.nameField }} {{ field.valueField && "-" }}
+        {{ field.valueField }}
+      </div>
+      }
+    </div>
+    <div class="artwork-description artwork-info">
+      {{ datasourceCard?.description_explication }}
+    </div>
+  </div>
+
+  <div class="wrapper-artwork-photo"></div>
+
+  <div class="wrapper-artwork-audio"></div>
+
+  <div class="wrapper-artwork-video"></div>
+</div>
