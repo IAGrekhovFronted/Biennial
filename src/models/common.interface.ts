@@ -30,8 +30,9 @@ export interface IAuthorTeam {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  country_team: ICountryTeam;
+  country_origins: ICountry[];
   composition?: IArtwork[];
+  authors?: IAuthor[];
 }
 
 export interface IAuthor {
@@ -47,8 +48,9 @@ export interface IAuthor {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  country_origins: ICountry;
+  country_origins: ICountry[];
   composition?: IArtwork[];
+  author_teams?: IAuthorTeam[];
 }
 
 interface ITypeProject {
@@ -61,16 +63,6 @@ interface ITypeProject {
 }
 
 interface ICountry {
-  id: number;
-  documentId: string;
-  country: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  country_localise: string;
-}
-
-interface ICountryTeam {
   id: number;
   documentId: string;
   country: string;

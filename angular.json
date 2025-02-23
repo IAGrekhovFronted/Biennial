@@ -1,34 +1,35 @@
 {
-    "version": 1,
-    "projects": {
-        "biennial_front": {
-            "projectType": "application",
-            "root": "",
-            "sourceRoot": "src",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
-                    "options": {
-                        "outputPath": "dist/biennial_front",
-                        "index": "src/index.html",
-                        "main": "src/main.ts",
-                        "polyfills": [
-                            "zone.js"
-                        ],
-                        "tsConfig": "tsconfig.json",
-                        "aot": true
-                    }
-                },
-                "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "buildTarget": "biennial_front:build"
-                    }
-                }
-            }
+  "version": 1,
+  "projects": {
+    "biennial_front": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/biennial_front",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.json",
+            "aot": true,
+            "assets": ["src/assets/"],
+            "styles": ["src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "biennial_front:build"
+          }
         }
-    },
-    "cli": {
-      "analytics": false
+      }
     }
+  },
+  "cli": {
+    "analytics": false
+  }
 }

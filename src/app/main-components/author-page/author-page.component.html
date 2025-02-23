@@ -1,8 +1,33 @@
-<author-card
-  [photo]="'https://a.d-cd.net/FgAAAgHsZOA-1920.jpg'"
-  [nameAuthor]="'Джеймс Вудс'"
-  [info]="[
-    { nameField: 'СТРАНА ПРОИСХОЖДЕНИЯ', valueField: 'США' },
-    { nameField: 'ГОРОД', valueField: 'Нью-Йорк' }
-  ]"
-></author-card>
+<area-header></area-header>
+<div class="wrapper-author-card">
+  <author-card
+    [photo]="datasourceCard?.link_photo"
+    [nameAuthor]="datasourceCard?.name_localise"
+    [info]="[
+      { nameField: 'СТРАНА ПРОИСХОЖДЕНИЯ', valueField: 'США' },
+      { nameField: 'ГОРОД', valueField: 'Нью-Йорк' }
+    ]"
+  ></author-card>
+  <div class="wrapper-author-information">
+    <div class="author-information-block">
+      <div class="author-information-title">Участвует в коллективах</div>
+      @for (team of datasourceCard?.author_teams; track $index) {
+      <div class="author-information-text">{{ team?.name_localise }}</div>
+      }
+    </div>
+
+    <div class="author-information-block">
+      <div class="author-information-title">Проекты</div>
+      @for (artwork of datasourceCard?.composition; track $index) {
+      <div class="author-information-text">{{ artwork?.title_localise }}</div>
+      }
+    </div>
+
+    <div class="author-information-block">
+      <div class="author-information-title">Краткая биография</div>
+      <div class="author-information-text">
+        {{ datasourceCard?.description_author }}
+      </div>
+    </div>
+  </div>
+</div>

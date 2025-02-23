@@ -1,0 +1,33 @@
+<area-header></area-header>
+<div class="wrapper-teams-card">
+  <author-card
+    [photo]="datasourceCard?.link_photo"
+    [nameAuthor]="datasourceCard?.name_localise"
+    [info]="[
+      { nameField: 'СТРАНА ПРОИСХОЖДЕНИЯ', valueField: 'США' },
+      { nameField: 'ГОРОД', valueField: 'Нью-Йорк' }
+    ]"
+  ></author-card>
+  <div class="wrapper-teams-information">
+    <div class="teams-information-block">
+      <div class="teams-information-title">Художники</div>
+      @for (team of datasourceCard?.authors; track $index) {
+      <div class="teams-information-text">{{ team?.name_localise }}</div>
+      }
+    </div>
+
+    <div class="teams-information-block">
+      <div class="teams-information-title">Проекты</div>
+      @for (artwork of datasourceCard?.composition; track $index) {
+      <div class="teams-information-text">{{ artwork?.title_localise }}</div>
+      }
+    </div>
+
+    <div class="teams-information-block">
+      <div class="teams-information-title">Описание</div>
+      <div class="teams-information-text">
+        {{ datasourceCard?.description_team }}
+      </div>
+    </div>
+  </div>
+</div>

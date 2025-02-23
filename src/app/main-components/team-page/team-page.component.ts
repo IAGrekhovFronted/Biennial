@@ -5,18 +5,18 @@ import { AreaHeaderComponent } from "@base-component/area-header/area-header.com
 import { CardService } from "@services/card.service";
 import { ActivatedRoute } from "@angular/router";
 
-import { IAuthor } from "@models/common.interface";
+import { IAuthorTeam } from "@models/common.interface";
 import { ICardInformation } from "@models/card.interface";
 
 @Component({
-  selector: "author-page",
+  selector: "team-page",
   imports: [AuthorCardComponent, AreaHeaderComponent],
-  templateUrl: "./author-page.component.html",
-  styleUrl: "./author-page.component.css",
+  templateUrl: "./team-page.component.html",
+  styleUrl: "./team-page.component.css",
 })
-export class AuthorPageComponent implements OnInit {
+export class TeamPageComponent implements OnInit {
   documentId!: string;
-  datasourceCard!: IAuthor;
+  datasourceCard!: IAuthorTeam;
   information: ICardInformation[] = [];
 
   constructor(
@@ -30,17 +30,10 @@ export class AuthorPageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.datasourceCard = await this.cardServise.getCard(
-      "authors",
+      "author-teams",
       this.documentId,
-      "populate=country_origins&populate=composition.series_project&populate=author_teams"
+      "populate=country_origins&populate=composition.series_project&populate=authors"
     );
     console.log(this.datasourceCard);
   }
-}
-
-function mapDataCard(data: IAuthor) {
-  const countryOrigin: ICardInformation = {
-    nameField: "СТРАНА ПРОИСХОЖДЕНИЯ",
-    valueField: "",
-  };
 }

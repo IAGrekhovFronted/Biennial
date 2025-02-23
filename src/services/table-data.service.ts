@@ -28,13 +28,17 @@ export class TableDataService {
 }
 
 function mapTableData(data: IArtwork[]): IRowTableData[] {
-  const tableData: IRowTableData[] = data.map((art) => {
+  return data.map((art) => {
     const authors = art.authors?.map((x) => x.name_localise) || [];
     const authorCountry =
-      art.authors?.map((x) => x.country_origins?.country_localise) || [];
+      art.authors?.flatMap(
+        (x) => x.country_origins?.map((c) => c.country_localise) || []
+      ) || [];
     const authorTeams = art.author_teams?.map((x) => x.name_localise) || [];
     const authorTeamsCountry =
-      art.author_teams?.map((x) => x.country_team?.country_localise) || [];
+      art.author_teams?.flatMap(
+        (x) => x.country_origins?.map((c) => c.country_localise) || []
+      ) || [];
 
     return {
       author: authors.length > 0 ? authors.join(", ") : authorTeams.join(", "),
@@ -48,6 +52,4 @@ function mapTableData(data: IArtwork[]): IRowTableData[] {
       area: art.explication_area?.title_localise || "",
     };
   });
-
-  return tableData;
 }
