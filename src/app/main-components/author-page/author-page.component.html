@@ -19,7 +19,12 @@
     <div class="author-information-block">
       <div class="author-information-title">Проекты</div>
       @for (artwork of datasourceCard?.composition; track $index) {
-      <div class="author-information-text">{{ artwork?.title_localise }}</div>
+      <div
+        class="author-information-text"
+        (click)="openComposition(artwork?.documentId)"
+      >
+        {{ artwork?.title_localise }}
+      </div>
       }
     </div>
 

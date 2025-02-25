@@ -12,7 +12,7 @@ export class TableDataService {
   async getTableData() {
     const responce: IArtwork[] = await this.fetchService.getRelationEntities(
       "projects",
-      "populate=authors.country_origins&populate=author_teams.country_team&populate=type_project&populate=biennial&populate=explication_area"
+      "populate=authors.country_origins&populate=author_teams.country_origins&populate=type_project&populate=biennial&populate=explication_area"
     );
     return mapTableData(responce);
   }
@@ -20,7 +20,7 @@ export class TableDataService {
   async getTableDataPagination(start: number, pagination: number) {
     const responce: IArtwork[] = await this.fetchService.getRelationEntities(
       "projects",
-      `pagination%5Bstart%5D=${start}&pagination%5Blimit%5D=${pagination}&populate=authors.country_origins&populate=author_teams.country_team&populate=type_project&populate=biennial&populate=explication_area`
+      `pagination%5Bstart%5D=${start}&pagination%5Blimit%5D=${pagination}&populate=authors.country_origins&populate=author_teams.country_origins&populate=type_project&populate=biennial&populate=explication_area`
     );
 
     return mapTableData(responce);
