@@ -13,6 +13,12 @@ export interface IComposition {
   year_creation: string | null;
 }
 
+export interface IFiltersData {
+  countries?: string[] | null;
+  "edition-biennials"?: string[] | null;
+  "type-projects"?: string[] | null;
+}
+
 export enum TargetCardEnum {
   AUTHOR = "author",
   AUTHOR_TEAMS = "author-teams",

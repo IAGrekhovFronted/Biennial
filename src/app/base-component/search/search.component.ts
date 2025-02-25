@@ -5,6 +5,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 
 import { FilterDataService } from "@services/filter-data.service";
+import { FilterOptionsService } from "@services/filter-options.service";
 
 @Component({
   selector: "search",
@@ -21,7 +22,14 @@ import { FilterDataService } from "@services/filter-data.service";
 export class SearchComponent implements OnInit {
   myControl = new FormControl("");
 
-  constructor(private readonly fetchFilter: FilterDataService) {}
+  constructor(
+    private readonly fetchFilter: FilterDataService,
+    private readonly filterOptionSend: FilterOptionsService
+  ) {
+    this.myControl.valueChanges.subscribe((value) =>
+      this.filterOptionSend.setSelectedOption(value)
+    );
+  }
 
   options: string[] = [];
 

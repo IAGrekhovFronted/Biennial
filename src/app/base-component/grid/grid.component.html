@@ -1,6 +1,7 @@
+<button (click)="testFilters()">Тест фильтра</button>
 <button (click)="openTest()">Тест</button>
 <div class="wrapper-grid-authors">
-  @for (author of dataSource; track $index) {
+  @for (author of filteredDataSource; track $index) {
   <main-author-card
     [nameAuthor]="author.name_localise"
     [photo]="author.image"

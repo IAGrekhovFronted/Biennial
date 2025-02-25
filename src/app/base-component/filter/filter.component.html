@@ -1,7 +1,9 @@
 <mat-form-field arrow-transform class="custom-filter" [ngStyle]="widthFilter">
-    <mat-select [formControl]="toppings" multiple [placeholder]="title">
-        @for (topping of options; track topping) {
-        <mat-option [value]="topping" class="custom-filter-options">{{topping}}</mat-option>
-        }
-    </mat-select>
+  <mat-select [formControl]="myControl" multiple [placeholder]="title">
+    @for (topping of options; track topping) {
+    <mat-option [value]="topping" class="custom-filter-options">{{
+      topping
+    }}</mat-option>
+    }
+  </mat-select>
 </mat-form-field>

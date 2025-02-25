@@ -2,8 +2,12 @@
 <div class="filters-wrapper">
   <div class="filters-icon-biennial"></div>
   <search class="search-biennial"></search>
-  <filter [title]="'ТИП'"></filter>
-  <filter [title]="'БИЕННАЛЕ №'" [width]="'135px'"></filter>
-  <filter [title]="'СТРАНА'"></filter>
+  <filter [title]="'ТИП'" [options]="optionsList['type-projects']"></filter>
+  <filter
+    [title]="'БИЕННАЛЕ №'"
+    [width]="'135px'"
+    [options]="optionsList['edition-biennials']"
+  ></filter>
+  <filter [title]="'СТРАНА'" [options]="optionsList['countries']"></filter>
   <toogle-icon (changeVisible)="changeVariantVisible($event)"></toogle-icon>
 </div>

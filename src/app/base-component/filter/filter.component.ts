@@ -4,6 +4,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { NgStyle } from "@angular/common";
 
+import { FilterOptionsService } from "@services/filter-options.service";
+
 @Component({
   selector: "filter",
   imports: [
@@ -17,14 +19,20 @@ import { NgStyle } from "@angular/common";
   styleUrl: "./filter.component.css",
 })
 export class FilterComponent implements AfterViewInit {
-  toppings = new FormControl("");
-  widthFilter = { width: "100px" };
+  myControl = new FormControl<string[]>([]);
+  widthFilter = { width: "auto" };
 
-  @Input() title: string = "Меню";
+  @Input() title!: string;
   @Input() options = [];
   @Input() width: string = "100px";
 
+  constructor(private readonly sendfilterService: FilterOptionsService) {
+    this.myControl.valueChanges.subscribe((value) => {
+      this.sendfilterService.setSelectedOptionsArray(value, this.title);
+    });
+  }
+
   ngAfterViewInit(): void {
-    this.widthFilter = { width: this.width };
+    // this.widthFilter = { width: this.width };
   }
 }

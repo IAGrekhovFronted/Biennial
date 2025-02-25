@@ -1,10 +1,15 @@
 import { Component, HostListener } from "@angular/core";
 import { MainAuthorCardComponent } from "../main-author-card/main-author-card.component";
-import { IAuthorCard, TargetCardEnum } from "@models/grid-data.interface";
+import {
+  IAuthorCard,
+  IFiltersData,
+  TargetCardEnum,
+} from "@models/grid-data.interface";
 
 import { Router } from "@angular/router";
 
 import { GridDataService } from "@services/grid-data.service";
+import { FilterOptionsService } from "@services/filter-options.service";
 
 @Component({
   selector: "grid",
@@ -17,13 +22,43 @@ export class GridComponent {
   startPagination: number = 0;
   pagination: number = 40;
   dataSource: IAuthorCard[] = [];
+  filteredDataSource: IAuthorCard[] = [];
+
+  selectedOptionSearch: string | null = null;
+  selectedOptionFilters: IFiltersData = {};
 
   constructor(
     private readonly dataService: GridDataService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly filterDataService: FilterOptionsService
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.filterDataService.$selectedOption.subscribe((value) => {
+      this.selectedOptionSearch = value;
+      if (!value)
+        this.filteredDataSource = JSON.parse(JSON.stringify(this.dataSource));
+      else
+        this.filteredDataSource = this.dataService.dataFilters(
+          this.dataSource,
+          value
+        );
+    });
+
+    this.filterDataService.$selectedOptionsArray.subscribe((value) => {
+      console.log("-*/-*/-*/");
+      console.log(value || checkArrayFields(value));
+      console.log("Условие checkArrayFields", checkArrayFields(value));
+      if (!value || checkArrayFields(value)) {
+        console.log("Условие checkArrayFields", checkArrayFields(value));
+        this.filteredDataSource = JSON.parse(JSON.stringify(this.dataSource));
+      } else {
+        this.filteredDataSource = this.dataService.filterDataObject(
+          value,
+          this.filteredDataSource
+        );
+      }
+    });
     await this.loadData();
   }
 
@@ -38,7 +73,10 @@ export class GridComponent {
     );
 
     this.countComposition = allTableData.length;
+
     this.dataSource = [...this.dataSource, ...tableData];
+    this.filteredDataSource = JSON.parse(JSON.stringify(this.dataSource));
+
     this.startPagination += this.pagination;
     this.loading = false;
   }
@@ -62,4 +100,25 @@ export class GridComponent {
   openTest() {
     this.router.navigate(["composition", "q0snvitcc2yc3f88ovitdjzr"]);
   }
+
+  testFilters() {
+    console.log("==========");
+    console.log(this.selectedOptionSearch);
+    console.log(this.dataSource);
+    console.log(this.filteredDataSource);
+  }
+}
+
+function checkArrayFields(
+  data: { [key: string]: string[] | null } | null
+): boolean {
+  if (!data) return true;
+
+  for (const key in data) {
+    if (data[key] === null || data[key]?.length === 0) {
+      return true;
+    }
+  }
+
+  return false;
 }
