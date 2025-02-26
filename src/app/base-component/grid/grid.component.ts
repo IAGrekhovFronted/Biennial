@@ -115,10 +115,10 @@ function checkArrayFields(
   if (!data) return true;
 
   for (const key in data) {
-    if (data[key] === null || data[key]?.length === 0) {
-      return true;
+    if (data[key] && data[key]!.length > 0) {
+      return false;
     }
   }
 
-  return false;
+  return true;
 }
