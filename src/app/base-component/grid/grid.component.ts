@@ -46,11 +46,7 @@ export class GridComponent {
     });
 
     this.filterDataService.$selectedOptionsArray.subscribe((value) => {
-      console.log("-*/-*/-*/");
-      console.log(value || checkArrayFields(value));
-      console.log("Условие checkArrayFields", checkArrayFields(value));
       if (!value || checkArrayFields(value)) {
-        console.log("Условие checkArrayFields", checkArrayFields(value));
         this.filteredDataSource = JSON.parse(JSON.stringify(this.dataSource));
       } else {
         this.filteredDataSource = this.dataService.filterDataObject(
@@ -96,16 +92,6 @@ export class GridComponent {
 
   openAuthorCard(documentId: string, targetCard: TargetCardEnum) {
     this.router.navigate([targetCard, documentId]);
-  }
-  openTest() {
-    this.router.navigate(["composition", "q0snvitcc2yc3f88ovitdjzr"]);
-  }
-
-  testFilters() {
-    console.log("==========");
-    console.log(this.selectedOptionSearch);
-    console.log(this.dataSource);
-    console.log(this.filteredDataSource);
   }
 }
 

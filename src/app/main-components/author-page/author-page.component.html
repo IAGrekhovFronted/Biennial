@@ -8,14 +8,18 @@
       { nameField: 'ГОРОД', valueField: 'Нью-Йорк' }
     ]"
   ></author-card>
+  @if (datasourceCard?.author_teams.length > 0 ||
+  datasourceCard?.composition.length > 0 || datasourceCard?.description_author)
+  {
   <div class="wrapper-author-information">
+    @if (datasourceCard?.author_teams.length > 0) {
     <div class="author-information-block">
       <div class="author-information-title">Участвует в коллективах</div>
       @for (team of datasourceCard?.author_teams; track $index) {
       <div class="author-information-text">{{ team?.name_localise }}</div>
       }
     </div>
-
+    } @if (datasourceCard?.composition.length > 0) {
     <div class="author-information-block">
       <div class="author-information-title">Проекты</div>
       @for (artwork of datasourceCard?.composition; track $index) {
@@ -27,12 +31,14 @@
       </div>
       }
     </div>
-
+    } @if (datasourceCard?.description_author) {
     <div class="author-information-block">
       <div class="author-information-title">Краткая биография</div>
       <div class="author-information-text">
         {{ datasourceCard?.description_author }}
       </div>
     </div>
+    }
   </div>
+  }
 </div>

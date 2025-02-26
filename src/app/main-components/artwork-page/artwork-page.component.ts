@@ -3,6 +3,7 @@ import { AreaHeaderComponent } from "@base-component/area-header/area-header.com
 
 import { CardService } from "@services/card.service";
 import { ActivatedRoute } from "@angular/router";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
 import { IArtwork } from "@models/common.interface";
 import { ICardInformation } from "@models/card.interface";
@@ -11,7 +12,7 @@ import { ICardInformation } from "@models/card.interface";
   selector: "artwork-page",
   imports: [AreaHeaderComponent],
   templateUrl: "./artwork-page.component.html",
-  styleUrl: "./artwork-page.component.css",
+  styleUrl: "./artwork-page.component.scss",
 })
 export class ArtworkPageComponent implements OnInit {
   documentId!: string;
@@ -23,7 +24,8 @@ export class ArtworkPageComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly cardServise: CardService
+    private readonly cardServise: CardService,
+    private readonly sanitizer: DomSanitizer
   ) {
     route.params.subscribe((params) => {
       this.documentId = params["id"];
@@ -34,8 +36,12 @@ export class ArtworkPageComponent implements OnInit {
     this.datasourceCard = await this.cardServise.getCard(
       "projects",
       this.documentId,
-      "populate=series_project&populate=type_project&populate=biennial&populate=area_creation&populate=explication_area&populate=provided&populate=type_explication&populate=photo&populate=video&populate=additional_material"
+      "populate=series_project&populate=type_project&populate=biennial&populate=area_creation&populate=explication_area&populate=provided&populate=type_explication&populate=photos&populate=videos&populate=additional_materials"
     );
     console.log(this.datasourceCard);
+  }
+
+  sanitizeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

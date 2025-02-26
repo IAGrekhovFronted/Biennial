@@ -18,5 +18,6 @@
 .filters-icon-biennial {
     background-image: url("/assets/iconBiennial.png");
     width: 40px;
+    cursor: pointer;
     @include image-format;
 }

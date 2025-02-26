@@ -2,6 +2,7 @@
 <div class="wrapper-artwork-card">
   <div class="artwork-title">{{ datasourceCard?.title_localise }}</div>
 
+  @if (datasourceCard?.description_explication) {
   <div class="wrapper-artwork-information">
     <div class="artwork-common-info artwork-info">
       @for (field of information; track field) {
@@ -15,10 +16,35 @@
       {{ datasourceCard?.description_explication }}
     </div>
   </div>
-
-  <div class="wrapper-artwork-photo"></div>
-
-  <div class="wrapper-artwork-audio"></div>
-
-  <div class="wrapper-artwork-video"></div>
+  } @if (datasourceCard?.photos.length > 0) {
+  <div class="wrapper-artwork-photo">
+    @for (photo of datasourceCard?.photos; track $index) {
+    <div class="image-container">
+      <img
+        src="{{ photo?.link_photo }}"
+        alt="{{ photo?.title_photo }}"
+        class="composition-photo"
+      />
+    </div>
+    }
+  </div>
+  } @if (datasourceCard?.videos.length > 0) {
+  <div class="wrapper-artwork-video">
+    @for (video of datasourceCard?.videos; track $index) {
+    <iframe
+      [src]="sanitizeUrl(video?.link_video)"
+      width="100%"
+      height="400"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+    }
+  </div>
+  } @if (datasourceCard?.additional_materials.length > 0) {
+  <div class="wrapper-artwork-audio">
+    @for (audio of datasourceCard?.additional_materials; track $index) {
+    <audio [src]="audio?.link_material" controls></audio>
+    }
+  </div>
+  }
 </div>

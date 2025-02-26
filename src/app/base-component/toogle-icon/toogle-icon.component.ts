@@ -1,28 +1,32 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { NgClass } from '@angular/common';
+import { NgClass } from "@angular/common";
 
 @Component({
-  selector: 'toogle-icon',
+  selector: "toogle-icon",
   imports: [NgClass],
-  templateUrl: './toogle-icon.component.html',
-  styleUrl: './toogle-icon.component.scss'
+  templateUrl: "./toogle-icon.component.html",
+  styleUrl: "./toogle-icon.component.scss",
 })
-export class ToogleIconComponent {
+export class ToogleIconComponent implements OnInit {
   activeGrid: boolean = true;
-  activetable: boolean = false;
 
-  @Output() changeVisible: EventEmitter<string> = new EventEmitter()
+  @Input() activeButton!: boolean;
+
+  constructor(private readonly router: Router) {}
+
+  ngOnInit(): void {
+    this.activeGrid = this.activeButton;
+  }
 
   setActiveGrid() {
     this.activeGrid = true;
-    this.activetable = false;
-    this.changeVisible.emit('Grid')
-  };
+    this.router.navigate([""], { queryParams: { type: "grid" } });
+  }
 
   setActiveTable() {
     this.activeGrid = false;
-    this.activetable = true;
-    this.changeVisible.emit('Table')
-  };
+    this.router.navigate([""], { queryParams: { type: "table" } });
+  }
 }

@@ -1,4 +1,4 @@
-<area-filters (changeVisible)="changeVisibleVariant($event)"></area-filters>
+<area-filters [activeToogleGrid]="!visibleTable"></area-filters>
 @if (visibleTable) {
 <table-biennial></table-biennial>
 } @else {

@@ -16,6 +16,9 @@ export interface IArtwork {
   type_project: ITypeProject;
   biennial: IBiennialNumber;
   explication_area: IExplicationArea;
+  photos: IPhotoData[];
+  videos: IVideoData[];
+  additional_materials: IAdditionalMaterialData[];
 }
 
 export interface IAuthorTeam {
@@ -92,4 +95,34 @@ interface IExplicationArea {
   updatedAt: string;
   publishedAt: string;
   street: string;
+}
+
+export interface IPhotoData {
+  id: number;
+  documentId: string;
+  title_photo: string;
+  link_photo: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export interface IVideoData {
+  id: number;
+  documentId: string;
+  title_video: string;
+  link_video: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export interface IAdditionalMaterialData {
+  id: number;
+  documentId: string;
+  title_material: string;
+  link_material: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 }

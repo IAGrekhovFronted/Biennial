@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { SearchComponent } from "../search/search.component";
 import { FilterComponent } from "../filter/filter.component";
 import { ToogleIconComponent } from "../toogle-icon/toogle-icon.component";
@@ -14,7 +14,7 @@ import { FetchService } from "@services/fetch.service";
 export class AreaFiltersComponent implements OnInit {
   optionsList: { [key: string]: string } = {};
 
-  @Output() changeVisible: EventEmitter<string> = new EventEmitter();
+  @Input() activeToogleGrid: boolean = false;
 
   constructor(private readonly fetchService: FetchService) {}
 
@@ -27,10 +27,5 @@ export class AreaFiltersComponent implements OnInit {
       const responce = await this.fetchService.getDataEntities(option[0]);
       this.optionsList[option[0]] = responce.map((x: any) => x[option[1]]);
     }
-    console.log(this.optionsList);
-  }
-
-  changeVariantVisible(event: string) {
-    this.changeVisible.emit(event);
   }
 }

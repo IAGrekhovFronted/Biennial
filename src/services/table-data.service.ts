@@ -47,6 +47,7 @@ function mapTableData(data: IArtwork[]): IRowTableData[] {
           ? authorCountry.join(", ")
           : authorTeamsCountry.join(", "),
       composition: art.title_localise || "",
+      docimentId: art.documentId,
       type: art.type_project?.type || "",
       biennial: art.biennial?.edition_localise || "",
       area: art.explication_area?.title_localise || "",

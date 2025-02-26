@@ -5,6 +5,7 @@
 }
 
 .author-information-block {
+  padding-bottom: 10px;
   border-bottom: 1px solid #000;
   margin: 50px;
 }
@@ -23,4 +24,5 @@
 
 .author-information-text {
   font-size: 30px;
+  cursor: pointer;
 }

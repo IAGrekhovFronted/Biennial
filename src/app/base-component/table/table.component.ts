@@ -5,6 +5,10 @@ import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { TableDataService } from "@services/table-data.service";
 import { IRowTableData } from "src/models/table-data.interface";
+import { IFiltersData } from "@models/grid-data.interface";
+
+import { Router } from "@angular/router";
+import { FilterOptionsService } from "@services/filter-options.service";
 
 @Component({
   selector: "table-biennial",
@@ -18,8 +22,13 @@ export class TableComponent implements OnInit {
   startPagination: number = 0;
   pagination: number = 20;
 
-  private _liveAnnouncer = inject(LiveAnnouncer);
+  selectedOptionSearch: string | null = null;
+  selectedOptionFilters: IFiltersData = {};
 
+  filteredDataSource: any[] = [];
+  dataSource!: MatTableDataSource<IRowTableData>;
+
+  private _liveAnnouncer = inject(LiveAnnouncer);
   displayedColumns: string[] = [
     "author",
     "country",
@@ -28,15 +37,17 @@ export class TableComponent implements OnInit {
     "biennial",
     "area",
   ];
-  dataSource!: MatTableDataSource<IRowTableData>;
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private readonly dataService: TableDataService) {}
+  constructor(
+    private readonly dataService: TableDataService,
+    private readonly router: Router,
+    private readonly filterDataService: FilterOptionsService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     const allTableData = await this.dataService.getTableData();
-    console.log(allTableData);
     const tableData = await this.dataService.getTableDataPagination(
       this.startPagination,
       this.pagination
@@ -76,5 +87,9 @@ export class TableComponent implements OnInit {
       );
       this.dataSource = new MatTableDataSource(tableData);
     }
+  }
+
+  openComposition(documentId: string) {
+    this.router.navigate(["composition", documentId]);
   }
 }
