@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { FetchService } from "./fetch.service";
 import { IArtwork } from "../models/common.interface";
 import { IRowTableData } from "../models/table-data.interface";
+import { IAuthorCard } from "../models/grid-data.interface";
 
 @Injectable({
   providedIn: "root",
@@ -24,6 +25,12 @@ export class TableDataService {
     );
 
     return mapTableData(responce);
+  }
+
+  dataFilters(data: IRowTableData[], option: string) {
+    return data.filter(
+      (item) => item.author === option || item.composition === option
+    );
   }
 }
 

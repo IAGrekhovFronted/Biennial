@@ -51,7 +51,6 @@ export class GridDataService {
     data: any[]
   ): any[] {
     if (!filters) return data;
-    console.log("Условие filterDataObject", data);
     return data.filter((item) => {
       return Object.entries(filters).every(([key, values]) => {
         if (!values || values.length === 0) return true;
