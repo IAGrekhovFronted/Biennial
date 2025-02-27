@@ -12,14 +12,24 @@
     <div class="teams-information-block">
       <div class="teams-information-title">Художники</div>
       @for (team of datasourceCard?.authors; track $index) {
-      <div class="teams-information-text">{{ team?.name_localise }}</div>
+      <div
+        class="teams-information-text information-link"
+        (click)="openAuthor(team?.documentId)"
+      >
+        {{ team?.name_localise }}
+      </div>
       }
     </div>
 
     <div class="teams-information-block">
       <div class="teams-information-title">Проекты</div>
       @for (artwork of datasourceCard?.composition; track $index) {
-      <div class="teams-information-text">{{ artwork?.title_localise }}</div>
+      <div
+        class="teams-information-text information-link"
+        (click)="openComposition(artwork?.documentId)"
+      >
+        {{ artwork?.title_localise }}
+      </div>
       }
     </div>
 

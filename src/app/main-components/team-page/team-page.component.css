@@ -23,4 +23,9 @@
 
 .teams-information-text {
   font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.information-link {
+  cursor: pointer;
 }

@@ -16,7 +16,12 @@
     <div class="author-information-block">
       <div class="author-information-title">Участвует в коллективах</div>
       @for (team of datasourceCard?.author_teams; track $index) {
-      <div class="author-information-text">{{ team?.name_localise }}</div>
+      <div
+        class="author-information-text"
+        (click)="openTeams(team?.documentId)"
+      >
+        {{ team?.name_localise }}
+      </div>
       }
     </div>
     } @if (datasourceCard?.composition.length > 0) {

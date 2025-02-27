@@ -13,6 +13,7 @@ import { ICardInformation } from "@models/card.interface";
   imports: [AreaHeaderComponent],
   templateUrl: "./artwork-page.component.html",
   styleUrl: "./artwork-page.component.scss",
+  standalone: true,
 })
 export class ArtworkPageComponent implements OnInit {
   documentId!: string;
@@ -38,7 +39,6 @@ export class ArtworkPageComponent implements OnInit {
       this.documentId,
       "populate=series_project&populate=type_project&populate=biennial&populate=area_creation&populate=explication_area&populate=provided&populate=type_explication&populate=photos&populate=videos&populate=additional_materials"
     );
-    console.log(this.datasourceCard);
   }
 
   sanitizeUrl(url: string): SafeResourceUrl {

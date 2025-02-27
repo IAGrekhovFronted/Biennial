@@ -3,7 +3,7 @@ import { AuthorCardComponent } from "@base-component/author-card/author-card.com
 import { AreaHeaderComponent } from "@base-component/area-header/area-header.component";
 
 import { CardService } from "@services/card.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 import { IAuthorTeam } from "@models/common.interface";
 import { ICardInformation } from "@models/card.interface";
@@ -20,10 +20,11 @@ export class TeamPageComponent implements OnInit {
   information: ICardInformation[] = [];
 
   constructor(
-    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly activateRoter: ActivatedRoute,
     private readonly cardServise: CardService
   ) {
-    route.params.subscribe((params) => {
+    activateRoter.params.subscribe((params) => {
       this.documentId = params["id"];
     });
   }
@@ -34,6 +35,13 @@ export class TeamPageComponent implements OnInit {
       this.documentId,
       "populate=country_origins&populate=composition.series_project&populate=authors"
     );
-    console.log(this.datasourceCard);
+  }
+
+  openComposition(documentId: string) {
+    this.router.navigate(["composition", documentId]);
+  }
+
+  openAuthor(documentId: string) {
+    this.router.navigate(["author", documentId]);
   }
 }

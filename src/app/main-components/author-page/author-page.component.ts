@@ -35,11 +35,14 @@ export class AuthorPageComponent implements OnInit {
       this.documentId,
       "populate=country_origins&populate=composition.series_project&populate=author_teams"
     );
-    console.log(this.datasourceCard);
   }
 
   openComposition(documentId: string) {
     this.router.navigate(["composition", documentId]);
+  }
+
+  openTeams(documentId: string) {
+    this.router.navigate(["author-teams", documentId]);
   }
 }
 
