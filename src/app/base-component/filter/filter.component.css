@@ -17,6 +17,8 @@
   text-align: center;
   height: 35px;
   opacity: 0.6;
+  font-family: "Inter", sans-serif !important;
+  font-size: 15px;
 }
 
 .custom-filter-label {
@@ -24,10 +26,9 @@
 }
 
 .custom-filter-options {
-  font-size: 14px;
+  font-size: 17px;
 }
 
 ::ng-deep .mat-mdc-select-panel {
   background-color: #fff !important;
-  opacity: 0.8 !important;
 }

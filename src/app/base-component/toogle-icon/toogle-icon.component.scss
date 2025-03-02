@@ -16,18 +16,18 @@
 }
 
 .toogle-grid {
-    background-image: url("/assets/IconGrid.png");
+    background-image: url("/assets/images/IconGrid.png");
     cursor: pointer;
     @include toogle-item;
 }
 
 .toogle-slide {
-    background-image: url("/assets/IconSlide.png");
+    background-image: url("/assets/images/IconSlide.png");
     @include toogle-item;
 }
 
 .toogle-table {
-    background-image: url("/assets/IconTable.png");
+    background-image: url("/assets/images/IconTable.png");
     cursor: pointer;
     @include toogle-item;
 }

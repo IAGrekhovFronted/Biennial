@@ -13,6 +13,6 @@ export class AreaHeaderComponent {
   constructor(private readonly router: Router) {}
 
   homeRoute() {
-    this.router.navigate([""]);
+    this.router.navigate(["", "grid"]);
   }
 }

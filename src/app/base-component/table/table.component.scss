@@ -5,8 +5,14 @@
     background-repeat: no-repeat;
 }
 
+@mixin font-table {
+    font-family: 'Wremena', sans-serif !important;
+    font-size: 20px;
+}
+
 table {
     width: 100%;
+
 }
 
 th.mat-sort-header-sorted {
@@ -22,7 +28,7 @@ th.mat-sort-header-sorted {
 }
 
 .pagination-arrow-left {
-    background-image: url("../../../assets/arrowLeft.png");
+    background-image: url("/assets/images/arrowLeft.png");
     height: 15px;
     width: 15px;
     cursor: pointer;
@@ -38,7 +44,7 @@ th.mat-sort-header-sorted {
 }
 
 .pagination-arrow-right {
-    background-image: url("/assets/arrowRight.png");
+    background-image: url("/assets/images/arrowRight.png");
     height: 15px;
     width: 15px;
     cursor: pointer;
@@ -46,7 +52,7 @@ th.mat-sort-header-sorted {
 }
 
 .pagination-slide {
-    background-image: url("/assets/IconSlide.png");
+    background-image: url("/assets/images/IconSlide.png");
     height: 35px;
     width: 35px;
     cursor: pointer;
@@ -59,8 +65,10 @@ th.mat-sort-header-sorted {
 
 .biennial-main-table-row {
     cursor: pointer;
+    @include font-table;
 }
 
 .main-table-header {
     font-weight: bold;
+    @include font-table;
 }

@@ -5,7 +5,7 @@
 }
 
 .filters-header-biennial {
-    background-image: url("/assets/filtersHeaderImage.png");
+    background-image: url("/assets/images/filtersHeaderImage.png");
     @include image-format;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .filters-icon-biennial {
-    background-image: url("/assets/iconBiennial.png");
+    background-image: url("/assets/images/iconBiennial.png");
     width: 40px;
     @include image-format;
 }

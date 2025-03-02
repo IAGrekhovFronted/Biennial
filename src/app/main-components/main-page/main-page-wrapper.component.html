@@ -1,6 +1,8 @@
 <area-filters [activeToogleGrid]="!visibleTable"></area-filters>
-@if (visibleTable) {
-<table-biennial></table-biennial>
-} @else {
-<grid></grid>
-}
+<div class="main-wrapper-page">
+  @if (visibleTable) {
+  <table-biennial></table-biennial>
+  } @else {
+  <grid></grid>
+  }
+</div>
