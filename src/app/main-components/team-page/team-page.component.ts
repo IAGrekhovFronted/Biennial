@@ -46,7 +46,6 @@ export class TeamPageComponent implements OnInit {
 
   getTeamsInfo(): Array<ICardInformation> {
     const resultInfo: Array<ICardInformation> = [];
-    console.log(this.datasourceCard);
 
     const countryOrigins = this.datasourceCard?.country_origins;
     if (countryOrigins?.length > 0 && countryOrigins[0]?.country_localise) {

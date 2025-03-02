@@ -13,7 +13,6 @@ export class ImageComponent {
   activeImage: boolean = false;
 
   clickImageCard() {
-    console.log(this.activeImage);
     this.activeImage = !this.activeImage;
   }
 }
