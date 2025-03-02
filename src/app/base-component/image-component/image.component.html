@@ -1,0 +1,17 @@
+<div class="image-container" (click)="clickImageCard()">
+  <img
+    src="{{ photo?.link_photo }}"
+    alt="{{ photo?.title_photo }}"
+    class="composition-photo"
+  />
+</div>
+
+@if (activeImage) {
+<div class="wrapper-popup-image" (click)="clickImageCard()">
+  <img
+    src="{{ photo?.link_photo }}"
+    alt="{{ photo?.title_photo }}"
+    class="popup-composition-photo"
+  />
+</div>
+}

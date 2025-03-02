@@ -44,21 +44,6 @@
   flex: 2;
 }
 
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
-  width: 500px;
-  overflow: hidden;
-}
-
-.composition-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .wrapper-artwork-photo {
   @include media-wrapper
 }

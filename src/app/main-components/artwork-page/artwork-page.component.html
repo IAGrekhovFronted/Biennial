@@ -19,13 +19,7 @@
   } @if (datasourceCard?.photos.length > 0) {
   <div class="wrapper-artwork-photo">
     @for (photo of datasourceCard?.photos; track $index) {
-    <div class="image-container">
-      <img
-        src="{{ photo?.link_photo }}"
-        alt="{{ photo?.title_photo }}"
-        class="composition-photo"
-      />
-    </div>
+    <image-component [photo]="photo"></image-component>
     }
   </div>
   } @if (datasourceCard?.videos.length > 0) {

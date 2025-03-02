@@ -8,9 +8,11 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { IArtwork } from "@models/common.interface";
 import { ICardInformation } from "@models/card.interface";
 
+import { ImageComponent } from "@base-component/image-component/image.component";
+
 @Component({
   selector: "artwork-page",
-  imports: [AreaHeaderComponent],
+  imports: [AreaHeaderComponent, ImageComponent],
   templateUrl: "./artwork-page.component.html",
   styleUrl: "./artwork-page.component.scss",
   standalone: true,
