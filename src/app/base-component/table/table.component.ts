@@ -20,7 +20,7 @@ import { FilterOptionsService } from "@services/filter-options.service";
 export class TableComponent implements OnInit {
   countComposition: number = 0;
   startPagination: number = 0;
-  pagination: number = 20;
+  pagination: number = 10;
 
   selectedOptionSearch: string | null = null;
   selectedOptionFilters: IFiltersData = {};
@@ -127,7 +127,7 @@ export class TableComponent implements OnInit {
     }
   }
   async paginationRight() {
-    if (this.pagination > this.countComposition) return;
+    if (this.startPagination + this.pagination >= this.countComposition) return;
     else {
       this.startPagination += this.pagination;
       const tableData = await this.dataService.getTableDataPagination(
