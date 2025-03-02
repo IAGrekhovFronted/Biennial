@@ -19,5 +19,10 @@
     background-image: url("/assets/images/iconBiennial.png");
     width: 40px;
     cursor: pointer;
+    transition: transform 0.3s ease;
     @include image-format;
+}
+
+.filters-icon-biennial:hover {
+    transform: scale(1.15);
 }

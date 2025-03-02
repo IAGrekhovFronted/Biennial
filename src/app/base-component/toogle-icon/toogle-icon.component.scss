@@ -18,6 +18,7 @@
 .toogle-grid {
     background-image: url("/assets/images/IconGrid.png");
     cursor: pointer;
+    transition: transform 0.3s ease;
     @include toogle-item;
 }
 
@@ -29,7 +30,14 @@
 .toogle-table {
     background-image: url("/assets/images/IconTable.png");
     cursor: pointer;
+    transition: transform 0.3s ease;
     @include toogle-item;
+}
+
+.toogle-grid:hover,
+.toogle-table:hover
+{
+    transform: scale(1.15);
 }
 
 .active {

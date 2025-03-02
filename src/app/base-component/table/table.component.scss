@@ -65,6 +65,7 @@ th.mat-sort-header-sorted {
 
 .biennial-main-table-row {
     cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     @include font-table;
 }
 
@@ -72,3 +73,9 @@ th.mat-sort-header-sorted {
     font-weight: bold;
     @include font-table;
 }
+
+.biennial-main-table-row:hover {
+    transform: scale(1.01);
+    opacity: 0.9;
+  }
+  

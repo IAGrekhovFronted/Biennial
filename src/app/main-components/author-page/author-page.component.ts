@@ -12,7 +12,7 @@ import { ICardInformation } from "@models/card.interface";
   selector: "author-page",
   imports: [AuthorCardComponent, AreaHeaderComponent],
   templateUrl: "./author-page.component.html",
-  styleUrl: "./author-page.component.css",
+  styleUrl: "./author-page.component.scss",
 })
 export class AuthorPageComponent implements OnInit {
   documentId!: string;

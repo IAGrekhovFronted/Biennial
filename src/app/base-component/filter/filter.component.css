@@ -19,6 +19,12 @@
   opacity: 0.6;
   font-family: "Inter", sans-serif !important;
   font-size: 15px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.custom-filter:hover {
+  transform: scale(1.1);
+  opacity: 1;
 }
 
 .custom-filter-label {
