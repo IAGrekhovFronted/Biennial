@@ -19,6 +19,7 @@ export interface IArtwork {
   photos: IPhotoData[];
   videos: IVideoData[];
   additional_materials: IAdditionalMaterialData[];
+  series_project: ISeriesInfo;
 }
 
 export interface IAuthorTeam {
@@ -52,8 +53,10 @@ export interface IAuthor {
   updatedAt: string;
   publishedAt: string;
   country_origins: ICountry[];
+  country_residences: ICountry[];
   composition?: IArtwork[];
   author_teams?: IAuthorTeam[];
+  city_origin?: ICity;
 }
 
 interface ITypeProject {
@@ -125,4 +128,25 @@ export interface IAdditionalMaterialData {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+}
+
+export interface ICity {
+  id: number;
+  documentId: string;
+  city: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  city_localise: string;
+}
+
+interface ISeriesInfo {
+  id: number;
+  documentId: string;
+  title_series: string;
+  title_series_localise: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  annotation: string | null;
 }

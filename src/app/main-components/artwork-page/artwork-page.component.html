@@ -5,7 +5,7 @@
   @if (datasourceCard?.description_explication) {
   <div class="wrapper-artwork-information">
     <div class="artwork-common-info artwork-info">
-      @for (field of information; track field) {
+      @for (field of getArtworkInfo(); track field) {
       <div class="artwork-card-info">
         {{ field.nameField }} {{ field.valueField && "-" }}
         {{ field.valueField }}

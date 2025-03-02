@@ -33,7 +33,7 @@ export class AuthorPageComponent implements OnInit {
     this.datasourceCard = await this.cardServise.getCard(
       "authors",
       this.documentId,
-      "populate=country_origins&populate=composition.series_project&populate=author_teams"
+      "populate=country_origins&populate=composition.series_project&populate=author_teams&populate=city_origin&populate=country_residences"
     );
   }
 
@@ -44,11 +44,38 @@ export class AuthorPageComponent implements OnInit {
   openTeams(documentId: string) {
     this.router.navigate(["author-teams", documentId]);
   }
-}
 
-function mapDataCard(data: IAuthor) {
-  const countryOrigin: ICardInformation = {
-    nameField: "СТРАНА ПРОИСХОЖДЕНИЯ",
-    valueField: "",
-  };
+  getAuthorInfo(): Array<ICardInformation> {
+    const resultInfo: Array<ICardInformation> = [];
+    console.log(this.datasourceCard);
+
+    const countryOrigins = this.datasourceCard?.country_origins;
+    if (countryOrigins?.length > 0 && countryOrigins[0]?.country_localise) {
+      resultInfo.push({
+        nameField: "СТРАНА ПРОИСХОЖДЕНИЯ",
+        valueField: countryOrigins[0].country_localise,
+      });
+    }
+
+    const cityOrigin = this.datasourceCard?.city_origin;
+    if (cityOrigin && cityOrigin?.city_localise) {
+      resultInfo.push({
+        nameField: "ГОРОД ПРОИСХОДЖЕНИЯ",
+        valueField: cityOrigin.city_localise,
+      });
+    }
+
+    const countryResidences = this.datasourceCard?.country_residences;
+    if (
+      countryResidences?.length > 0 &&
+      countryResidences[0]?.country_localise
+    ) {
+      resultInfo.push({
+        nameField: "СТРАНА ПРОЖИВАНИЯ",
+        valueField: countryResidences[0].country_localise,
+      });
+    }
+
+    return resultInfo;
+  }
 }

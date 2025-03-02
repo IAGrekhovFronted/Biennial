@@ -3,41 +3,43 @@
   <author-card
     [photo]="datasourceCard?.link_photo"
     [nameAuthor]="datasourceCard?.name_localise"
-    [info]="[
-      { nameField: 'СТРАНА ПРОИСХОЖДЕНИЯ', valueField: 'США' },
-      { nameField: 'ГОРОД', valueField: 'Нью-Йорк' }
-    ]"
+    [info]="getTeamsInfo()"
   ></author-card>
-  <div class="wrapper-teams-information">
-    <div class="teams-information-block">
-      <div class="teams-information-title">Художники</div>
-      @for (team of datasourceCard?.authors; track $index) {
-      <div
-        class="teams-information-text information-link"
-        (click)="openAuthor(team?.documentId)"
-      >
-        {{ team?.name_localise }}
+  <div class="wrapper-right-block">
+    <div class="wrapper-teams-information">
+      <div class="teams-information-block">
+        <div class="teams-information-title">Художники</div>
+        @for (team of datasourceCard?.authors; track $index) {
+        <div
+          class="teams-information-text information-link"
+          (click)="openAuthor(team?.documentId)"
+        >
+          {{ team?.name_localise }}
+        </div>
+        }
       </div>
-      }
-    </div>
 
-    <div class="teams-information-block">
-      <div class="teams-information-title">Проекты</div>
-      @for (artwork of datasourceCard?.composition; track $index) {
-      <div
-        class="teams-information-text information-link"
-        (click)="openComposition(artwork?.documentId)"
-      >
-        {{ artwork?.title_localise }}
+      <div class="teams-information-block">
+        <div class="teams-information-title">Проекты</div>
+        @for (artwork of datasourceCard?.composition; track $index) {
+        <div
+          class="teams-information-text information-link"
+          (click)="openComposition(artwork?.documentId)"
+        >
+          {{ artwork?.title_localise }}
+        </div>
+        }
       </div>
-      }
-    </div>
 
-    <div class="teams-information-block">
-      <div class="teams-information-title">Описание</div>
-      <div class="teams-information-text">
-        {{ datasourceCard?.description_team }}
+      <div class="teams-information-block">
+        <div class="teams-information-title">Описание</div>
+        <div class="teams-information-text">
+          {{ datasourceCard?.description_team }}
+        </div>
       </div>
     </div>
+    @if(datasourceCard?.website) {
+    <div class="teams-website">{{ datasourceCard?.website }}</div>
+    }
   </div>
 </div>

@@ -36,5 +36,6 @@
 }
 
 ::ng-deep .mat-mdc-select-panel {
+  padding: 10px !important;
   background-color: #fff !important;
 }

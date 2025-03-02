@@ -20,10 +20,6 @@ import { ImageComponent } from "@base-component/image-component/image.component"
 export class ArtworkPageComponent implements OnInit {
   documentId!: string;
   datasourceCard!: IArtwork;
-  information: ICardInformation[] = [
-    { nameField: "СТРАНА ПРОИСХОЖДЕНИЯ", valueField: "США" },
-    { nameField: "ГОРОД", valueField: "Нью-Йорк" },
-  ];
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -45,5 +41,51 @@ export class ArtworkPageComponent implements OnInit {
 
   sanitizeUrl(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  getArtworkInfo(): Array<ICardInformation> {
+    const resultInfo: Array<ICardInformation> = [];
+
+    const biennial = this.datasourceCard?.biennial;
+    if (biennial?.edition_localise) {
+      resultInfo.push({
+        nameField: "БИЕННАЛЕ",
+        valueField: biennial?.edition_localise,
+      });
+    }
+
+    const typeComposition = this.datasourceCard?.type_project;
+    if (typeComposition?.type) {
+      resultInfo.push({
+        nameField: "ТИП",
+        valueField: typeComposition?.type,
+      });
+    }
+
+    const yearCreation = this.datasourceCard?.year_creation;
+    if (yearCreation) {
+      resultInfo.push({
+        nameField: "ГОД СОЗДАНИЯ",
+        valueField: yearCreation,
+      });
+    }
+
+    const explicationArea = this.datasourceCard?.explication_area;
+    if (explicationArea?.title_localise) {
+      resultInfo.push({
+        nameField: "ПЛОЩАДКА ЭКСПЛИКАЦИИ",
+        valueField: explicationArea?.title_localise,
+      });
+    }
+
+    const seriesComposition = this.datasourceCard?.series_project;
+    if (seriesComposition.title_series_localise) {
+      resultInfo.push({
+        nameField: "СЕРИЯ ПРОИЗВЕДЕНИЙ",
+        valueField: seriesComposition.title_series_localise,
+      });
+    }
+
+    return resultInfo;
   }
 }

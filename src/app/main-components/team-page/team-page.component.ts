@@ -17,7 +17,6 @@ import { ICardInformation } from "@models/card.interface";
 export class TeamPageComponent implements OnInit {
   documentId!: string;
   datasourceCard!: IAuthorTeam;
-  information: ICardInformation[] = [];
 
   constructor(
     private readonly router: Router,
@@ -43,5 +42,28 @@ export class TeamPageComponent implements OnInit {
 
   openAuthor(documentId: string) {
     this.router.navigate(["author", documentId]);
+  }
+
+  getTeamsInfo(): Array<ICardInformation> {
+    const resultInfo: Array<ICardInformation> = [];
+    console.log(this.datasourceCard);
+
+    const countryOrigins = this.datasourceCard?.country_origins;
+    if (countryOrigins?.length > 0 && countryOrigins[0]?.country_localise) {
+      resultInfo.push({
+        nameField: "СТРАНА ПРОИСХОЖДЕНИЯ",
+        valueField: countryOrigins[0].country_localise,
+      });
+    }
+
+    const countryResidences = this.datasourceCard?.founded_year;
+    if (countryResidences) {
+      resultInfo.push({
+        nameField: "ГОД ОСНОВАНИЯ",
+        valueField: countryResidences,
+      });
+    }
+
+    return resultInfo;
   }
 }

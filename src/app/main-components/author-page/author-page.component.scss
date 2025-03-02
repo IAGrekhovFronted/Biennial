@@ -33,3 +33,15 @@
   transform: scale(1.2);
   opacity: 0.9;
 }
+
+.wrapper-right-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.author-website {
+  text-align: right;
+  font-size: 30px;
+  font-style: italic;
+}
