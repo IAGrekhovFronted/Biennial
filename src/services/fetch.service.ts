@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import { environmentDev } from '../environments/environment';
+import { environmentDev } from "../environments/environment.prod";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
-
 export class FetchService {
   url = environmentDev.url;
   token = environmentDev.token;
 
   headers = {
-    'Content-Type': 'application/json',
-    "Authorization": `Bearer ${this.token}`
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${this.token}`,
   };
 
   async getDataEntities(slug: string) {
@@ -22,12 +21,12 @@ export class FetchService {
 
     if (!response.ok) {
       throw new Error(`Ошибка: ${response.status} ${response.statusText}`);
-    };
+    }
 
     const data = await response.json();
 
     return data.data;
-  };
+  }
 
   async getRelationEntities(slug: string, relation: string) {
     const url = `${this.url}${slug}?${relation}`;
@@ -36,10 +35,10 @@ export class FetchService {
 
     if (!response.ok) {
       throw new Error(`Ошибка: ${response.status} ${response.statusText}`);
-    };
+    }
 
     const data = await response.json();
 
     return data.data;
-  };
-};
+  }
+}
